@@ -76,6 +76,7 @@ class SignInComponent extends React.Component<SignInProps> {
         // tslint:disable:jsx-no-lambda
         return (
             <form>
+                {logo}
                 <div className="cr-sign-in-form">
                     <div className="cr-sign-in-form__options-group">
                         <div className="cr-sign-in-form__option">
@@ -90,7 +91,6 @@ class SignInComponent extends React.Component<SignInProps> {
                         </div>
                     </div>
                     <div className="cr-sign-in-form__form-content">
-                        {logo}
                         <div className={emailGroupClass}>
                             <CustomInput
                                 type="email"

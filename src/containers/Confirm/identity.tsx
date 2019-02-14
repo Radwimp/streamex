@@ -265,6 +265,7 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
                       className="pg-confirm__content-phone-deep-button"
                       label={this.translate('page.body.kyc.next')}
                       onClick={this.sendData}
+                      disabled={!firstName || !lastName  || !dateOfBirth || !nationality || !residentialAddress || !countryOfBirth || !city || !postcode}
                   />
               </div>
           </div>
@@ -328,8 +329,15 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
         formatMonth = formatMonth === '' || parseFloat(formatMonth) <= 12 ? formatMonth : '12';
         const formatYear = year ? parseFloat(year) : '';
 
-        return (formatDay && formatMonth && formatYear) ?
-            `${formatDay}/${formatMonth}/${formatYear}` : date;
+        if (formatDay && formatMonth && formatYear) {
+            return `${formatDay}/${formatMonth}/${formatYear}`;
+        } else if (formatDay && formatMonth) {
+            return `${formatDay}/${formatMonth}`;
+        } else if (formatDay) {
+            return `${formatDay}`;
+        } else {
+            return date;
+        }
     }
 
     private handleChangeDate = (e: OnChangeEvent) => {

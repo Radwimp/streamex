@@ -4,8 +4,16 @@ import { InjectedIntlProps, injectIntl } from 'react-intl';
 import { connect, MapDispatchToPropsFunction, MapStateToProps } from 'react-redux';
 import { RouterProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
-import { SignInComponent, TwoFactorAuth } from '../../components';
-import { EMAIL_REGEX, ERROR_EMPTY_PASSWORD, ERROR_INVALID_EMAIL } from '../../helpers';
+import logo = require('../../assets/images/StreamexLogo.svg');
+import {
+    SignInComponent,
+    TwoFactorAuth,
+} from '../../components';
+import {
+    EMAIL_REGEX,
+    ERROR_EMPTY_PASSWORD,
+    ERROR_INVALID_EMAIL,
+} from '../../helpers';
 import {
     RootState,
     selectAlertState,
@@ -106,6 +114,7 @@ class SignInBox extends React.Component<Props, SignInState> {
                 receiveConfirmationLabel={this.props.intl.formatMessage({ id: 'page.header.signIn.receiveConfirmation' })}
                 forgotPasswordLabel={this.props.intl.formatMessage({ id: 'page.header.signIn.forgotPassword' })}
                 isLoading={loading}
+                image={logo}
                 onForgotPassword={this.forgotPassword}
                 onSignUp={this.handleSignUp}
                 onSignIn={this.handleSignIn}

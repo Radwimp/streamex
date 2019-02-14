@@ -47,7 +47,7 @@ export const dataFeedObject = (tradingChart: TradingChartComponent, markets: Mar
                     symbol: m.id,
                     full_name: m.name,
                     description: m.name,
-                    exchange: 'Cryptobase',
+                    exchange: 'Streamex',
                     ticker: m.id,
                     type: 'bitcoin',
                 }
@@ -68,7 +68,7 @@ export const dataFeedObject = (tradingChart: TradingChartComponent, markets: Mar
                 session: '24x7',
                 timezone: 'Etc/UTC',
                 ticker: symbol.id,
-                exchange: 'Cryptobase',
+                exchange: 'Streamex',
                 minmov: 1,
                 pricescale: 10000,
                 has_intraday: true,

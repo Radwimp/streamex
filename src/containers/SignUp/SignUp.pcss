@@ -17,8 +17,8 @@
 
     &__options-group {
       width: 100%;
-      height: calc(var(--big-gap) * 0.97);
-      border-bottom: 2px solid var(--sign-in-text);
+      height: 58px;
+      border-bottom: 1px solid var(--text-muted);
     }
 
     &__form-content {
@@ -31,10 +31,25 @@
 
     &__option {
       background: var(--header);
-      .__selected {
-        border-bottom: 2px solid var(--sign-in-accent);
-        color: var(--color-white);
+
+      &-inner {
+        color: var(--button-primary);
+        height: 40px;
+        line-height: calc(var(--gap) * 6);
+        margin: 9px auto;
       }
+
+      .__selected {
+        color: var(--header);
+        background: var(--color-white);
+        border-bottom: 1px solid var(--header);
+        border-radius: calc(var(--gap) * 3.38);
+        font-weight: 600;
+      }
+    }
+
+    &__tab-signip {
+      font-weight: 600;
     }
 
     &__group--focused {
@@ -50,7 +65,7 @@
     .cr-button {
       color: var(--color-white);
       background: var(--button-primary) !important;
-      border-radius: calc(var(--gap) * 0.5);
+      border-radius: calc(var(--gap) * 3.38);
       font-size: calc(var(--gap) * 2.66);
       margin-top: calc(var(--gap) * 1.55);
 
@@ -59,21 +74,28 @@
         background: var(--button-disabled) !important;
       }
 
+      &:active {
+        background: var(--button-active) !important;
+      }
+
       &:hover {
         background: var(--button-hover) !important;
       }
 
-      &:active {
-        background: var(--button-active) !important;
+      &:focus {
+        outline: none;
       }
     }
 
     &__title {
       background: var(--transparent);
-      color: var(--active-color);
-      font-size: calc(var(--gap) * 4);
-      margin: calc(var(--gap) * 6.66) !important;
+      margin: 0;
+
+      .cr-sign-up-form__image {
+        width: 95%;
+      }
     }
+
     &__label {
       background: var(--base-bright);
       color: var(--text-muted);
@@ -86,7 +108,11 @@
         color: var(--color-white);
         font-size: calc(var(--gap) * 2.33);
         border: 1px solid var(--input-block-border-color);
-        border-radius: calc(var(--gap) * 0.66);
+        border-radius: calc(var(--gap) * 3.38);
+
+        &::placeholder {
+          color: var(--auth-placeholder-color);
+        }
       }
     }
     &__footer {
@@ -104,13 +130,13 @@
     .cr-checkbox {
       padding-left: calc(2.6 * var(--checkbox-general-intent));
       &__checkitem {
-        border-color: var(--checkbox-border-color);
+        border-color: var(--sign-in-text);
         &::after {
           border-color: var(--color-white);
         }
       }
       &__label {
-        color: var(--c--base-9);
+        color: var(--auth-placeholder-color);
         font-size: calc(var(--gap) * 2.33);
       }
     }

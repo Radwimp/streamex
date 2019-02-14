@@ -1,4 +1,4 @@
-export const PG_TITLE_PREFIX = 'Cryptobase';
+export const PG_TITLE_PREFIX = 'Streamex';
 
 export const pgRoutes = (isLoggedIn: boolean): string[][] => {
     const routes = [

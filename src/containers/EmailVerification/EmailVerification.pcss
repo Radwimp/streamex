@@ -3,12 +3,13 @@
     height: calc(100vh - calc(var(--gap) * 9.84));
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background: url(/static/media/background.a12e192e.svg);
     background-size: cover;
 
 
     .pg-emailverification {
+        margin-top: calc(var(--gap) * 3.33);
         width: calc(var(--big-gap) * 7.07);
         display: flex;
         flex-direction: column;
@@ -20,11 +21,12 @@
 
         &-title {
             background-color: var(--email-confirmation-screen-title-background);
+            border-bottom: calc(var(--gap) * 0.167) solid var(--email-form-border);
             display: flex;
             justify-content: center;
             align-items: center;
             text-transform: uppercase;
-            color: var(--white);
+            color: var(--color-white);
             font-size: calc(var(--big-gap) * 0.23);
             width: 100%;
             height: var(--big-gap);

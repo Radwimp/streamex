@@ -9,20 +9,19 @@
 
   /* STYLE GUIDE */
 
-  --main-bg: #1E2841;
-  --back-bg: #171C29;
+  --main-bg: #1D193F;
+  --back-bg: #0D0B2D;
   --second-bg: #222B41;
-  --text: #657395;
-  --placeholder-text: #737F92;
-  --header: #27324F;
+  --text: #9290A5;
+  --placeholder-text: #3A3475;
+  --header: #1D193F;
   --header-text: #919EBA;
-  --button-normal: #2E4C80;
+  --button-normal: #4084D4;
   --white: #FFFFFF;
   --accent: #3C78E0;
-  --green: #54B489;
-  --red: #E85E59;
-  --selected-item: #3A4663;
-  --gamboge: #E0A300;
+  --green: #4A9E86;
+  --red: #CA5C57;
+  --selected-item: #2D2951;
 
   /* DARK.PCSS */
 
@@ -53,7 +52,7 @@
   --background-dark: var(--main-bg);
   --background-wallet-item: var(--header);
   --background-wallet-item-active: #FA00FF;
-  --background-dropdown: var(--button-normal);
+  --background-dropdown: var(--selected-item);
   --background-dropdown-hover: var(--header-text);
   --background-dropdown-hover-text: var(--color-white);
   --button-primary: var(--button-normal);
@@ -81,7 +80,7 @@
   --withdraw-button-bg: #FA00FF;
   --table-background: var(--main-bg);
   --table-border-bottom: #FA00FF;
-  --table-header-color: var(--placeholder-text);
+  --table-header-color: var(--text);
   --table-dark-header-color: var(--header);
   --title-component-color: var(--header-text);
   --table-even-row-background: var(--main-bg);
@@ -113,7 +112,7 @@
   --markets-filter-active-color: var(--color-white);
   --markets-title-color: var(--header-text);
   --markets-search-border-color: var(--placeholder-text);
-  --markets-selected-color: var(--text);
+  --markets-selected-color: var(--selected-item);
   --market-info-dropdown-bg-color: #FA00FF;
   --market-info-dropdown-color: #FA00FF;
   --grid-item-bg: #FA00FF;
@@ -151,6 +150,7 @@
   --background-dropdown-open-text: var(--header);
   --font-light: lighter;
   --sign-in-text: var(--text);
+  --auth-placeholder-color: var(--placeholder-text);
   --sign-in-accent: var(--accent);
   --email-form-bg: var(--main-bg);
   --email-form-border: var(--text);
@@ -191,13 +191,13 @@
   --wallets-item-border: var(--selected-item);
   --wallets-font-bold: 800;
   --wallets-balance: var(--color-white);
-  --wallets-table-divider: var(--text);
+  --wallets-table-divider: #333459;
 
     /* profile */
   --profile-btn: var(--button-normal);
   --profile-box-head: #FA00FF;
   --profile-box: var(--main-bg);
-  --profile-grey: var(--placeholder-text);
+  --profile-grey: var(--text);
   --profile-slider-round: var(--accent);
   --profile-slider: var(--button-normal);
   --profile-activity-header: var(--header);
@@ -211,7 +211,7 @@
   --kyc-header-color: var(--header);
   --kyc-header-border: var(--text);
   --kyc-progress-line: var(--placeholder-text);
-  --kyc-circle-color: var(--main-bg);
+  --kyc-circle-color: var(--second-bg);
   --kyc-active-color: var(--accent);
   --kyc-grey: var(--placeholder-text);
   --kyc-button: var(--button-normal);
@@ -225,7 +225,7 @@
 
   /* Resend email confirmation screen */
   --email-confirmation-screen-background: var(--main-bg);
-  --email-confirmation-screen-title-background: var(--header);
+  --email-confirmation-screen-title-background: var(--background-dark);
   --email-confirmation-screen-title-color: var(--header-text);
   --email-confirmation-screen-text-color: var(--placeholder-text);
 
@@ -236,6 +236,7 @@
 }
 
 .cr-title-component {
+  color: var(--color-white);
   font-size: 1em !important;
   width: 100%;
   border-bottom: 1px solid var(--trading-header);
@@ -246,15 +247,15 @@
   overflow-y: scroll;
 
   &-header__content {
-    height: auto;
-    padding: 9px 12px 9px;
-    cursor: move;
     background: var(--table-dark-header-color);
     box-shadow: inset 0 -1px 0 var(--header-border);
+    color: var(--color-white);
+    cursor: move;
+    height: auto;
+    padding: 9px 12px 9px;
     position: sticky;
     top: 0;
     z-index: 9999;
-    color: var(--title-component-color);
   }
 
   &-background {
@@ -321,7 +322,7 @@ body, html {
 }
 
 .cr-button {
-  border-radius: 4px;
+  border-radius: 27px;
 }
 
 .cr-table {

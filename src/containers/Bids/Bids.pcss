@@ -2,6 +2,21 @@
   width: 100%;
   background: var(--base-bright);
 
+  .cr-order-book {
+    .cr-table-container {
+      .cr-table__body tr td {
+        color: var(--markets-filter-color);
+      }
+    }
+  }
+
+  .cr-table-background--right {
+    .cr-table-background__row {
+      border-bottom: 2px solid var(--base-bright);
+      padding: calc(var(--gap) * 2.6666 - 1px);
+    }
+  }
+
   @media (min-width: 640px) and (max-width: 992px) {
     flex: 1;
     max-width: 100%;
@@ -11,6 +26,13 @@
     max-width: 100%;
   }
 
+  @media screen and (max-width: 768px) {
+    .cr-table-background--right {
+      .cr-table-background__row {
+        padding: calc(var(--gap) * 2.375 - 1px);
+      }
+    }
+  }
 }
 
 .pg-bids--loading {

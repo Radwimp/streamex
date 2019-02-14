@@ -251,6 +251,7 @@ export const zh: LangType = {
     'page.body.profile.content.action.request2fa': '申请2FA的QR码',
     'page.body.profile.content.action.enable2fa': '启用2FA',
     'page.body.profile.content.action.login.2fa': '使用2FA登录',
+    'page.body.profile.content.action.passwordChange': 'Password change',
     'page.body.profile.content.action.requestPasswordReset': '请求密码重置',
     'page.body.profile.content.action.passwordReset': '密码重置',
 

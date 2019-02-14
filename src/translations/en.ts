@@ -158,7 +158,7 @@ export const en = {
     'page.body.history.trade.header.amount': 'Amount',
     'page.body.history.trade.header.balance': 'Balance',
 
-    'page.body.profile.header.account': 'Profile',
+    'page.body.profile.header.account': 'Account',
 
     'page.body.profile.header.account.content.password': 'Password',
     'page.body.profile.header.account.content.password.button.change': 'Change',
@@ -246,6 +246,7 @@ export const en = {
     'page.body.profile.content.action.request2fa': 'Request QR code for 2FA',
     'page.body.profile.content.action.enable2fa': 'Enable 2FA',
     'page.body.profile.content.action.login.2fa': 'Login with 2FA',
+    'page.body.profile.content.action.passwordChange': 'Password change',
     'page.body.profile.content.action.requestPasswordReset': 'Request password reset',
     'page.body.profile.content.action.passwordReset': 'Password reset',
 
@@ -265,7 +266,7 @@ export const en = {
     'page.body.kyc.identity.residentialAddress': 'Residential Address',
     'page.body.kyc.identity.city': 'City',
     'page.body.kyc.identity.postcode': 'Postcode',
-    'page.body.kyc.identity.nationality': 'Citizenship',
+    'page.body.kyc.identity.nationality': 'Select Nationality',
     'page.body.kyc.identity.CoR': 'Country of Residence',
     'page.body.kyc.documents.expiryDate': 'Expiration Date DD/MM/YYYY',
     'page.body.kyc.documents.drag': 'Drag and drop or browse files',

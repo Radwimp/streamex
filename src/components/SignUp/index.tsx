@@ -67,7 +67,6 @@ class SignUpForm extends React.Component<SignUpFormProps> {
             onSignIn,
             image,
             isLoading,
-            siteKey,
             captchaType,
             labelSignIn,
             labelSignUp,
@@ -109,7 +108,7 @@ class SignUpForm extends React.Component<SignUpFormProps> {
             (
                 <div className="cr-sign-up-form__recaptcha">
                     <ReCAPTCHA
-                        sitekey={siteKey}
+                        sitekey="6Lf_Mo0UAAAAAEWj9n2-2qo9t2_Ihw3YPt6SvI24"
                         onChange={this.props.recaptchaOnChange}
                     />
                 </div>
@@ -117,6 +116,7 @@ class SignUpForm extends React.Component<SignUpFormProps> {
 
         return (
             <form>
+                {logo}
                 <div className="cr-sign-up-form">
                     <div className="cr-sign-up-form__options-group">
                         <div className="cr-sign-up-form__option">
@@ -131,7 +131,6 @@ class SignUpForm extends React.Component<SignUpFormProps> {
                         </div>
                     </div>
                     <div className="cr-sign-up-form__form-content">
-                        {logo}
                         <div className={emailGroupClass}>
                             <CustomInput
                                 type="email"

@@ -6,7 +6,7 @@
   }
 
   &__title {
-    color: var(--color-white));
+    color: var(--color-white);
     margin-bottom: var(--gap);
     margin-top: 0;
   }
@@ -57,14 +57,28 @@
     background: var(--button-primary);
     color: var(--color-white);
     font-size: calc(var(--gap) * 2.66);
+    font-weight: normal;
+    outline: none;
   }
 
   .cr-copyable-text-field {
     border-color: var(--sign-in-input-border-color);
+    border-radius: calc(var(--gap) * 3.38);
 
     input {
-      font-size: 1.2rem;
+      border-radius: calc(var(--gap) * 3.38);
       color: var(--dark-color);
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    #secret-2fa {
+      margin: auto calc(var(--gap) * 0.5);
+    }
+
+    .cr-copyable-text-field__button {
+      color: var(--color-white);
+      background: var(--button-normal);
     }
   }
 }

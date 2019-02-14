@@ -48,14 +48,14 @@ const cols = {
 
 const layouts = {
     lg: [
-        { x: 16, y: 0, w: 4, h: 14, i: '0', minH: 12, minW: 2 },
-        { x: 16, y: 18, w: 8, h: 20, i: '1', minH: 18, minW: 4 },
-        { x: 0, y: 0, w: 16, h: 39, i: '2', minH: 12, minW: 5 },
-        { x: 16, y: 14, w: 4, h: 14, i: '3', minH: 8, minW: 3 },
-        { x: 20, y: 14, w: 4, h: 14, i: '4', minH: 8, minW: 3 },
+        { x: 16, y: 0, w: 4, h: 12, i: '0', minH: 12, minW: 2 },
+        { x: 16, y: 24, w: 8, h: 20, i: '1', minH: 18, minW: 4 },
+        { x: 0, y: 0, w: 16, h: 34, i: '2', minH: 12, minW: 5 },
+        { x: 16, y: 12, w: 4, h: 12, i: '3', minH: 8, minW: 3 },
+        { x: 20, y: 12, w: 4, h: 12, i: '4', minH: 8, minW: 3 },
         { x: 16, y: 38, w: 8, h: 13, i: '5', minH: 12, minW: 5 },
-        { x: 0, y: 40, w: 16, h: 22, i: '6', minH: 8, minW: 5 },
-        { x: 26, y: 0, w: 4, h: 14, i: '7', minH: 8, minW: 4 },
+        { x: 0, y: 40, w: 16, h: 23, i: '6', minH: 8, minW: 5 },
+        { x: 26, y: 0, w: 4, h: 12, i: '7', minH: 8, minW: 4 },
     ],
     md: [
         { x: 18, y: 0, w: 6, h: 15, i: '0', minH: 12, minW: 2 },

@@ -36,7 +36,7 @@ type Props = ReduxProps & DispatchProps & InjectedIntlProps;
 class OrderBookContainer extends React.Component<Props> {
     public render() {
         const { bids, bidsLoading, asks } = this.props;
-        const cn = classNames('', {
+        const cn = classNames('pg-bids', {
             'pg-bids--loading': bidsLoading,
         });
 

@@ -13,6 +13,7 @@ import {
 } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { captchaType, siteKey } from '../../api';
+import logo = require('../../assets/images/StreamexLogo.svg');
 import { SignUpForm } from '../../components';
 import {
     EMAIL_REGEX,
@@ -114,6 +115,7 @@ class SignUpComponent extends React.Component<Props> {
                         refId={refId}
                         handleChangeRefId={this.handleChangeRefId}
                         isLoading={loading}
+                        image={logo}
                         onSignIn={this.handleSignIn}
                         onSignUp={this.handleSignUp}
                         siteKey={siteKey()}

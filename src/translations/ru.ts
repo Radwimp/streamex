@@ -252,6 +252,7 @@ export const ru: LangType = {
     'page.body.profile.content.action.request2fa': 'Запрошен QR-код для 2FA',
     'page.body.profile.content.action.enable2fa': 'Активация 2FA',
     'page.body.profile.content.action.login.2fa': 'Вход в систему с 2FA',
+    'page.body.profile.content.action.passwordChange': 'Смена пароля',
     'page.body.profile.content.action.requestPasswordReset': 'Запрос на сброс пароля',
     'page.body.profile.content.action.passwordReset': 'Сброс пароля',
 

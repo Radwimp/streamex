@@ -1,0 +1,72 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: "Test"
+    image: node:10.11
+    environment:
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=199fa5c9-8c7c-4cc2-b4c4-78524fdcab41" > .npmrc
+      - export REACT_APP_GIT_SHA=$(git rev-parse --short HEAD)
+      - echo $REACT_APP_GIT_SHA > .tags
+      - npm -g install yarn
+      - yarn install
+      - yarn lint
+      - yarn test:ci --collectCoverage=true
+      - yarn build
+    when:
+      event:
+        - push
+        - pull_request
+      branch:
+        - master
+
+  - name: "Build"
+    image: plugins/gcr
+    settings:
+      repo: gcr.io/optimize-stage/baseapp
+      tags: baseapp-${DRONE_COMMIT_SHA:0:7}
+      json_key:
+        from_secret: optimize_gcp_creds_base64
+    when:
+      branch:
+          - master
+      event:
+          - push
+
+  - name: "Redeploy on devkube"
+    image: rubykube/microkube:0.2.0
+    environment:
+      WEBHOOK_JWT_SECRET:
+        from_secret: optimize_webhook_secret
+    commands:
+      - export latest_image=gcr.io/optimize-stage/baseapp:${DRONE_COMMIT_SHA:0:7}
+      - cd /home/app
+      - bundle exec rake payload:send[frontend,$latest_image,http://www.streamex.tech:1337]
+    when:
+      branch:
+          - master
+      event:
+          - push
+
+  - name: "Notify about redeployment on devkube"
+    image: plugins/slack
+    settings:
+      webhook:
+        from_secret: optimize_slack_webhook
+      channel:
+        from_secret: optimize_slack_channel
+      template: >
+        {{#success build.status}}
+          [SUCCESS] (Base Application) Master branch build by {{ build.author }} has succeeded!
+          Visit http://www.streamex.tech to check it out!
+        {{else}}
+          [FAILURE] Master branch build by {{ build.author }} has failed!
+        {{/success}}
+        Check the build info here: {{ build.link }}
+    when:
+      status: [success, failure]
+      branch:
+          - master
+      event:
+          - push

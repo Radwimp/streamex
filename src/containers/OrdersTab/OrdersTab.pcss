@@ -24,13 +24,6 @@
             border-top-left-radius: calc(var(--gap) * 0.66);
             border-top-right-radius: calc(var(--gap) * 0.66);
             margin-bottom: 0;
-
-            &-navigation {
-                .cr-tab {
-                    padding-left: calc(var(--gap) * 7);
-                    padding-right: calc(var(--gap) * 7);
-                }
-            }
         }
     }
 
@@ -120,6 +113,15 @@
                                 color: var(--table-text-color);
                                 text-decoration: none;
                             }
+
+                            .cr-close-button {
+                                padding: 0 calc(var(--gap) * 2);
+                                top: -20px;
+
+                                &::before, &::after {
+                                background: var(--table-text-color);
+                                }
+                            }
                         }
                     }
                 }
@@ -140,12 +142,11 @@
     }
 
     .cr-tab-panel__optinal-head {
-        position: absolute;
-        right: calc(var(--big-gap) * 0.4);
+        margin-left: 57%;
         margin-top: 1%;
         cursor: pointer;
         text-align: right;
-        color: var(--base-new);
+        color: var(--markets-filter-color);
         font-size: 12px !important;
         font-weight: 500;
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -164,16 +165,18 @@
     &__close {
         position: relative;
         display: inline-block;
-        margin-left: calc(var(--gap) / 1.2);
-        height: 15px;
-        width: 15px;
+        margin-left: calc(var(--gap) / 1.33);
+        height: calc(var(--gap) * 3);
+        width: calc(var(--gap) * 3);
+        overflow: hidden;
+        top: 3px;
 
         &::before,
         &::after {
             background: var(--text-table-grey);
             content: '';
             position: absolute;
-            top: 65%;
+            top: 50%;
             left: 0;
             height: 2px;
             width: 100%;

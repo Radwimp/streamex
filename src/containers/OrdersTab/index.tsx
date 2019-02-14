@@ -31,9 +31,9 @@ interface State {
 }
 
 class Orders extends React.PureComponent<Props, State> {
-    public state = { tab: 'open' };
+    public state = { tab: 'all' };
 
-    public tabMapping = ['open', 'all'];
+    public tabMapping = ['all', 'open'];
 
     public componentDidMount() {
         this.props.marketsFetch();
@@ -74,12 +74,12 @@ class Orders extends React.PureComponent<Props, State> {
         const { tab } = this.state;
         return [
             {
-                content: tab === 'open' ? <OrdersElement type="open"/> : null,
-                label: this.props.intl.formatMessage({ id: 'page.body.openOrders.tab.open'}),
-            },
-            {
                 content: tab === 'all' ? <OrdersElement type="all" /> : null,
                 label: this.props.intl.formatMessage({ id: 'page.body.openOrders.tab.all'}),
+            },
+            {
+                content: tab === 'open' ? <OrdersElement type="open"/> : null,
+                label: this.props.intl.formatMessage({ id: 'page.body.openOrders.tab.open'}),
             },
         ];
     };

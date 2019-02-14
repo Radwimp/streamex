@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import logo = require('../../assets/images/logo.svg');
+import logo = require('../../assets/images/StreamexLogo.svg');
 import { NavBar } from '../NavBar';
 
 interface HeaderState {

@@ -191,6 +191,7 @@ class DocumentsComponent extends React.Component<Props, DocumentsState> {
                         className="pg-confirm__content-phone-deep-button"
                         label={this.translate('page.body.kyc.submit')}
                         onClick={this.sendDocuments}
+                        disabled={!scans.length || !idNumber || !expiration}
                     />
                 </div>
             </React.Fragment>
@@ -258,8 +259,15 @@ class DocumentsComponent extends React.Component<Props, DocumentsState> {
         formatMonth = formatMonth === '' || parseFloat(formatMonth) <= 12 ? formatMonth : '12';
         const formatYear = year ? parseFloat(year) : '';
 
-        return (formatDay && formatMonth && formatYear) ?
-               `${formatDay}/${formatMonth}/${formatYear}` : date;
+        if (formatDay && formatMonth && formatYear) {
+            return `${formatDay}/${formatMonth}/${formatYear}`;
+        } else if (formatDay && formatMonth) {
+            return `${formatDay}/${formatMonth}`;
+        } else if (formatDay) {
+            return `${formatDay}`;
+        } else {
+            return date;
+        }
     }
 
     private handleChangeExpiration = (e: OnChangeEvent) => {
