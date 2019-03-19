@@ -14,7 +14,6 @@ describe('Constants', () => {
 
     const expectedRoutesForNotLoggedInUser = [
       ['page.header.navbar.signIn', '/signin'],
-      ['page.header.navbar.trade', '/trade'],
     ];
 
     it('Rendering correct title prefix', () => {
@@ -26,10 +25,10 @@ describe('Constants', () => {
     });
 
     it('Rendering correct correct routes if user is not logged in', () => {
-        expect(pgRoutes(false)).toEqual(expectedRoutesForNotLoggedInUser);
+        expect(pgRoutes(false, '/signup')).toEqual(expectedRoutesForNotLoggedInUser);
     });
 
     it('Rendering correct correct routes if user is not logged in', () => {
-        expect(pgRoutes(true)).toEqual(expectedRoutesForLoggedInUser);
+        expect(pgRoutes(true, '/trade')).toEqual(expectedRoutesForLoggedInUser);
     });
 });

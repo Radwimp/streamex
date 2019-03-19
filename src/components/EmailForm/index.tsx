@@ -50,14 +50,12 @@ class EmailForm extends React.Component<EmailFormProps> {
                 <div className="cr-email-form">
                     <div className="cr-email-form__options-group">
                         <div className="cr-email-form__option">
-                            <div className="cr-email-form__option-inner">
+                            <div className="pg-forgot-password-screen__headline">
                                 {title ? title : 'Forgot password'}
-                                <div className="cr-email-form__cros-icon" onClick={this.handleCancel}>
-                                    <img src={require('./close.svg')}/>
-                                </div>
                             </div>
                         </div>
                     </div>
+                    <div className="cr-email-form__label">The withdrawal will be disabled for 24 hours once the password is reset.</div>
                     <div className="cr-email-form__form-content">
                         <div className="cr-email-form__header">
                           {message}
@@ -65,13 +63,13 @@ class EmailForm extends React.Component<EmailFormProps> {
                         <div className={emailGroupClass}>
                             <CustomInput
                                 type="email"
-                                label={emailLabel || 'Email'}
+                                label=""
                                 placeholder={emailLabel || 'Email'}
-                                defaultLabel="Email"
+                                defaultLabel=""
                                 handleChangeInput={this.props.handleInputEmail}
                                 inputValue={email}
                                 handleFocusInput={this.props.handleFieldFocus}
-                                classNameLabel="cr-email-form__label"
+                                classNameLabel=""
                                 classNameInput="cr-email-form__input"
                             />
                             {emailError && <div className="cr-email-form__error">{emailError}</div>}
@@ -91,9 +89,6 @@ class EmailForm extends React.Component<EmailFormProps> {
         );
     }
 
-    private handleCancel = () => {
-        this.props.handleReturnBack();
-    }
 
     private handleSubmitForm() {
         this.props.OnSubmit();

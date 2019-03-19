@@ -102,11 +102,11 @@ class SignInBox extends React.Component<Props, SignInState> {
                 email={email}
                 emailError={emailError}
                 emailFocused={emailFocused}
-                emailPlaceholder={this.props.intl.formatMessage({ id: 'page.header.signIn.email' })}
+                emailPlaceholder="Enter your email address"
                 password={password}
                 passwordError={passwordError}
                 passwordFocused={passwordFocused}
-                passwordPlaceholder={this.props.intl.formatMessage({ id: 'page.header.signIn.password' })}
+                passwordPlaceholder="Enter your password"
                 labelSignIn={this.props.intl.formatMessage({ id: 'page.header.signIn' })}
                 labelSignUp={this.props.intl.formatMessage({ id: 'page.header.signUp' })}
                 emailLabel={this.props.intl.formatMessage({ id: 'page.header.signIn.email' })}

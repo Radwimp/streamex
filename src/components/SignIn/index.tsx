@@ -51,10 +51,7 @@ class SignInComponent extends React.Component<SignInProps> {
             passwordPlaceholder,
             isLoading,
             onForgotPassword,
-            onSignUp,
-            image,
             labelSignIn,
-            labelSignUp,
             emailLabel,
             passwordLabel,
             forgotPasswordLabel,
@@ -67,29 +64,12 @@ class SignInComponent extends React.Component<SignInProps> {
         const passwordGroupClass = cr('cr-sign-in-form__group', {
             'cr-sign-in-form__group--focused': passwordFocused,
         });
-        const logo = image ? (
-            <h1 className="cr-sign-in-form__title">
-                <img className="cr-sign-in-form__image" src={image} alt="logo" />
-            </h1>
-        ) : null;
 
         // tslint:disable:jsx-no-lambda
         return (
             <form>
-                {logo}
                 <div className="cr-sign-in-form">
-                    <div className="cr-sign-in-form__options-group">
-                        <div className="cr-sign-in-form__option">
-                            <div className="cr-sign-in-form__option-inner __selected">
-                                {labelSignIn ? labelSignIn : 'Sign In'}
-                            </div>
-                        </div>
-                        <div className="cr-sign-in-form__option">
-                            <div className="cr-sign-in-form__option-inner cr-sign-in-form__tab-signup" onClick={onSignUp}>
-                                {labelSignUp ? labelSignUp : 'Sign Up'}
-                            </div>
-                        </div>
-                    </div>
+                    <span className={'cr-sign-in-form__headline'}>Log in with your account</span>
                     <div className="cr-sign-in-form__form-content">
                         <div className={emailGroupClass}>
                             <CustomInput
@@ -119,6 +99,14 @@ class SignInComponent extends React.Component<SignInProps> {
                             />
                             {passwordError && <div className={'cr-sign-in-form__error'}>{passwordError}</div>}
                         </div>
+                        <div className="cr-sign-in-form__bottom-section">
+                            <div
+                                className="cr-sign-in-form__bottom-section-password"
+                                onClick={() => onForgotPassword(email)}
+                            >
+                                {forgotPasswordLabel ? forgotPasswordLabel : 'Forgot your password?'}
+                            </div>
+                        </div>
                         <div className="cr-sign-in-form__button-wrapper">
                             <Button
                                 label={isLoading ? 'Loading...' : (labelSignIn ? labelSignIn : 'Sign in')}
@@ -127,14 +115,6 @@ class SignInComponent extends React.Component<SignInProps> {
                                 disabled={isLoading || !email.match(EMAIL_REGEX) || !password}
                                 onClick={this.handleClick}
                             />
-                        </div>
-                        <div className="cr-sign-in-form__bottom-section">
-                            <div
-                                className="cr-sign-in-form__bottom-section-password"
-                                onClick={() => onForgotPassword(email)}
-                            >
-                                {forgotPasswordLabel ? forgotPasswordLabel : 'Forgot your password?'}
-                            </div>
                         </div>
                     </div>
                 </div>

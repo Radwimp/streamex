@@ -3,6 +3,7 @@ import { nationalitiesNames } from './nationalities';
 
 export const ru: LangType = {
     'page.header.navbar.signIn': 'Войти',
+    'page.header.navbar.signUp': 'Зарегистрироваться',
     'page.header.navbar.trade': 'Биржа',
     'page.header.navbar.wallets': 'Кошельки',
     'page.header.navbar.openOrders': 'Ордера',

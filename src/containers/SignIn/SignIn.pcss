@@ -6,8 +6,8 @@
   background-size: cover;
   .pg-sign-in-screen__container {
     background: var(--transparent);
-    margin-top: calc(var(--gap) * 3.33);
-    width: calc(var(--gap) * 70.66);
+    margin-top: calc(var(--gap) * 5);
+    width: calc(var(--gap) * 80);
   }
   .cr-sign-in-form {
     background: var(--base-bright);
@@ -15,7 +15,17 @@
     border-radius: calc(var(--gap) * 0.66);
     display: flex;
     flex-direction: column;
-    height: calc(var(--big-gap) * 5.5);
+    height: calc(var(--big-gap) * 7);
+    max-width: 530px;
+    width: 530px;
+
+    &__form-content {
+      top: 100px;
+    }
+
+    &__group {
+      margin: 30px 0;
+    }
 
     &__options-group {
       width: 100%;
@@ -25,7 +35,7 @@
 
     &__button-wrapper {
       min-height: calc(var(--gap));
-      bottom: calc(var(--gap) * 3.5);
+      bottom: -5px;
     }
 
     &__option {
@@ -83,11 +93,21 @@
         width: 95%;
       }
     }
+    &__headline {
+      text-align: center;
+      color: var(--sign-in-label-color);
+      font-size: 38px;
+      font-weight: 700;
+      margin-top: 40px;
+    }
     &__label {
       background: var(--base-bright);
-      color: var(--text-muted);
-      font-size: calc(var(--gap) * 2);
-      top: 0;
+      color: var(--sign-in-label-color);
+      font-size: calc(var(--gap) * 2.5);
+      font-weight: 300;
+      top: -15px;
+      left: 2px;
+      padding: 0;
       position: absolute;
     }
     &__forgot {
@@ -96,13 +116,14 @@
     }
     &__input {
       input {
+        height: calc(var(--gap) * 6.5);
         color: var(--color-white);
         font-size: calc(var(--gap) * 2.33);
         border: 1px solid var(--input-block-border-color);
-        border-radius: calc(var(--gap) * 3.38);
 
         &::placeholder {
-          color: var(--auth-placeholder-color);
+          color: var(--sign-in-label-color);
+          font-weight: lighter;
         }
       }
     }
@@ -111,8 +132,13 @@
       color: var(--order-error-color);
     }
 
-    &__bottom-section-password {
-      color: var(--auth-placeholder-color) !important;
+    &__bottom-section {
+      position: relative;
+      bottom: 20px;
+      &-password {
+        color: var(--sign-in-label-color) !important;
+        text-align: right !important;
+      }
     }
 
     &__footer {

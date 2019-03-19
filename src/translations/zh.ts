@@ -3,6 +3,7 @@ import { nationalitiesNames } from './nationalities';
 
 export const zh: LangType = {
     'page.header.navbar.signIn': '登录',
+    'page.header.navbar.signUp': 'Don’t have an account? Sign up',
     'page.header.navbar.trade': '交易',
     'page.header.navbar.wallets':'钱包',
     'page.header.navbar.openOrders': '订单',
@@ -324,7 +325,7 @@ export const zh: LangType = {
 
     'page.resendConfirmation': '重新发送确认',
     'page.forgotPassword': '忘记密码',
-    'page.forgotPassword.message': 'Enter email to reset password',
+    'page.forgotPassword.message': 'Account',
     'page.password2fa': '2FA verification',
     'page.password2fa.message': 'Enter 2fa code from the app',
     'page.forgotPassword.email': '电子邮件',

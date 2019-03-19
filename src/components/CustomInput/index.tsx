@@ -30,7 +30,7 @@ class CustomInput extends React.Component<CustomInputProps> {
         return (
             <React.Fragment>
                 <label className={classNameLabel}>
-                    {inputValue && (label || defaultLabel)}
+                    {label || defaultLabel}
                 </label>
                 <Input
                     type={type}

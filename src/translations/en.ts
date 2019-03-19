@@ -1,7 +1,8 @@
 import { nationalitiesNames } from './nationalities';
 
 export const en = {
-    'page.header.navbar.signIn': 'Sign In',
+    'page.header.navbar.signIn': 'Already have an account? Login',
+    'page.header.navbar.signUp': 'Don’t have an account? Sign up',
     'page.header.navbar.trade': 'Trade',
     'page.header.navbar.wallets': 'Wallets',
     'page.header.navbar.openOrders': 'Orders',
@@ -303,7 +304,7 @@ export const en = {
     'page.header.signIn.createAccount': 'Create an account?',
 
     'page.header.signUp': 'Sign Up',
-    'page.header.signUp.email': 'Email',
+    'page.header.signUp.email': 'Account',
     'page.header.signUp.email.message.error': 'Email is invalid',
     'page.header.signUp.password': 'Password',
     'page.header.signUp.password.message.error': 'Password must contain at least 8 symbols, at least one capital letter and one digit',
@@ -318,12 +319,12 @@ export const en = {
                                       'please check your spam folder',
 
     'page.resendConfirmation': 'Resend Confirmation',
-    'page.forgotPassword': 'Forgot Password',
-    'page.forgotPassword.message': 'Enter email to reset password',
+    'page.forgotPassword': 'Reset password',
+    'page.forgotPassword.message': 'Account',
     'page.password2fa': '2FA verification',
     'page.password2fa.message': 'Enter 2fa code from the app',
     'page.forgotPassword.email': 'Email',
-    'page.forgotPassword.send': 'Send',
+    'page.forgotPassword.send': 'Submit',
     'page.noDataToShow': 'There is no data to show',
 
     'page.modal.withdraw.success': 'Success!',

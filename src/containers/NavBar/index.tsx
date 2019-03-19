@@ -106,7 +106,7 @@ class NavBarComponent extends React.Component<NavbarProps, NavbarState> {
         return (
             <div className={'pg-navbar'}>
                 <ul className="pg-navbar__content">
-                    {pgRoutes(!!user.email).map(this.navItem(address, this.props.onLinkChange))}
+                    {pgRoutes(!!user.email, address).map(this.navItem(address, this.props.onLinkChange))}
                 </ul>
                 <div className="pg-navbar__header-settings">
                     {user.email ? this.getUserEmailMenu() : null}
