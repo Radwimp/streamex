@@ -26,9 +26,9 @@ const defaults: SignUpFormProps = {
     handleFocusEmail: jest.fn(),
     handleFocusPassword: jest.fn(),
     handleFocusConfirmPassword: jest.fn(),
-    handleFocusRefId: jest.fn(),
+    handleOpenRefId: jest.fn(),
     confirmPasswordFocused: false,
-    refIdFocused: false,
+    refIdOpened: false,
     emailFocused: false,
     passwordFocused: false,
 };
@@ -45,26 +45,6 @@ describe('SignUp component', () => {
     it('renders without crashing', () => {
         const wrapper = setup();
         expect(wrapper).toBeDefined();
-    });
-
-    it('should render logo block', () => {
-        let wrapper = setup();
-        const firstState = wrapper.find('.cr-sign-up-form__title').children();
-        expect(firstState).toHaveLength(0);
-        wrapper = setup({ image: 'image'});
-        const secondState = wrapper.find('.cr-sign-up-form__title').children();
-        expect(secondState).toHaveLength(1);
-    });
-
-    it('should render captcha block', () => {
-        const wrapper = setup({hasConfirmed: true, captchaType: 'recaptcha'});
-        expect(wrapper.find('.cr-sign-up-form__recaptcha').exists()).toBe(true);
-    });
-
-    it('should have correct labels', () => {
-        const wrapper = setup({ labelSignIn: 'label sign in', labelSignUp: 'label sign up'});
-        expect(wrapper.find('.cr-sign-up-form__option-inner').first().text()).toBe('label sign in');
-        expect(wrapper.find('.__selected').text()).toBe('label sign up');
     });
 
     it('should render error blocks', () => {
@@ -98,7 +78,7 @@ describe('SignUp component', () => {
     it('should validate form', () => {
         const spyOnValidateForm = jest.fn();
         const spyOnSignUp = jest.fn();
-        let wrapper = setup({
+        const wrapper = setup({
             email: 'email',
             password: 'Qwerty123',
             confirmPassword: 'Qwerty123',
@@ -112,14 +92,6 @@ describe('SignUp component', () => {
         expect(spyOnSignUp).toHaveBeenCalledTimes(0);
         spyOnValidateForm.mockClear();
         spyOnSignUp.mockClear();
-
-        wrapper = setup({
-            email: 'email@email.com',
-            password: 'Qwerty123',
-            confirmPassword: 'Qwerty',
-            validateForm: spyOnValidateForm,
-            onSignUp: spyOnSignUp,
-        });
         button.simulate('click');
         expect(spyOnValidateForm).toHaveBeenCalled();
         expect(spyOnValidateForm).toHaveBeenCalledTimes(1);

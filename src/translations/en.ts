@@ -296,10 +296,10 @@ export const en = {
     'page.header.signIn.password.message.error': 'Password is invalid',
     'page.header.signIn.receiveConfirmation': 'Didn\'t receive your confirmation email?',
     'page.header.signIn.forgotPassword': 'Forgot your password?',
-    'page.header.signIn.resetPassword.title': 'Reset password',
+    'page.header.signIn.resetPassword.title': 'New password',
     'page.header.signIn.resetPassword.newPassword': 'New password',
     'page.header.signIn.resetPassword.repeatPassword': 'Repeat password',
-    'page.header.signIn.resetPassword.button': 'Change',
+    'page.header.signIn.resetPassword.button': 'Submit',
     'page.header.signIn.resetPassword.error': 'Fields are empty or don`t matches',
     'page.header.signIn.createAccount': 'Create an account?',
 
@@ -312,11 +312,11 @@ export const en = {
     'page.header.signUp.confirmPassword.message.error': 'Passwords don\'t match',
     'page.header.signUp.referalCode': 'Referral Code',
     'page.header.signUp.terms': 'I have read and agree to the Terms of Service',
-    'page.header.signUp.modal.header': 'VERIFY YOUR EMAIL ADDRESS',
-    'page.header.signUp.modal.body': 'To complete registration, check for an ' +
-                                      'email in your inbox with further ' +
-                                      'instruction. If you cannot find the email, ' +
-                                      'please check your spam folder',
+    'page.header.signUp.modal.header': 'Verification Code',
+    'page.header.signUp.modal.body': 'Check your email for secure ' +
+                                      'code. If it doesn\'t appear ' +
+                                      'within a few minutes, ' +
+                                      'check ypur spam folder.',
 
     'page.resendConfirmation': 'Resend Confirmation',
     'page.forgotPassword': 'Reset password',

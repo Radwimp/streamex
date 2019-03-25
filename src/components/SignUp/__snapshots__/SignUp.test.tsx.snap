@@ -5,30 +5,18 @@ exports[`SignUp component should render 1`] = `
   <div
     className="cr-sign-up-form"
   >
-    <div
-      className="cr-sign-up-form__options-group"
+    <span
+      className="cr-sign-up-form__headline"
     >
-      <div
-        className="cr-sign-up-form__option"
-      >
-        <div
-          className="cr-sign-up-form__option-inner cr-sign-in-form__tab-signin"
-        >
-          Sign In
-        </div>
-      </div>
-      <div
-        className="cr-sign-up-form__option"
-      >
-        <div
-          className="cr-sign-up-form__option-inner __selected"
-        >
-          Sign Up
-        </div>
-      </div>
-    </div>
+      Create your account
+    </span>
     <div
       className="cr-sign-up-form__form-content"
+      style={
+        Object {
+          "height": 360,
+        }
+      }
     >
       <div
         className="cr-sign-up-form__group"
@@ -76,26 +64,45 @@ exports[`SignUp component should render 1`] = `
         />
       </div>
       <div
+        className="cr-sign-up-form__ref"
+        onClick={[MockFunction]}
+      >
+        Have an Invitation code?
+        <svg
+          fill="none"
+          height="5"
+          viewBox="0 0 10 5"
+          width="10"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clipRule="evenodd"
+            d="M1.20711 1.20711C0.761653 0.761653 1.07714 0 1.70711 0H8.29289C8.92286 0 9.23835 0.761654 8.79289 1.20711L5.5 4.5C5.22386 4.77614 4.77614 4.77614 4.5 4.5L1.20711 1.20711Z"
+            fill="white"
+            fillRule="evenodd"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
+      <div
         className="cr-sign-up-form__group"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
       >
         <CustomInput
           classNameInput="cr-sign-up-form__input"
           classNameLabel="cr-sign-up-form__label"
           defaultLabel="Referral code"
           handleChangeInput={[MockFunction]}
-          handleFocusInput={[MockFunction]}
           inputValue=""
           label="Referral code"
           placeholder="Referral code"
           type="text"
         />
       </div>
-      <Component
-        checked={false}
-        className="cr-sign-up-form__checkbox"
-        label="I  agree all statements in terms of service"
-        onChange={[MockFunction]}
-      />
       <div
         className="cr-sign-up-form__button-wrapper"
       >
@@ -106,6 +113,18 @@ exports[`SignUp component should render 1`] = `
           onClick={[Function]}
           type="submit"
         />
+      </div>
+      <div
+        className="cr-sign-up-form__footer"
+      >
+        <span>
+          By clicking “Create Account”, you agree to the  
+        </span>
+        <a
+          href="/"
+        >
+          User Agreement
+        </a>
       </div>
     </div>
   </div>

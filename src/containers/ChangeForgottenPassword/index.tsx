@@ -99,6 +99,14 @@ class ChangeForgottenPasswordComponent extends React.Component<Props, ChangeForg
             'cr-email-form__group--focused': confirmPasswordFocused,
         });
 
+        const passwordRegexClass = cr({
+            'cr-email-form__check--success': password.match(PASSWORD_REGEX),
+        });
+
+        const passwordCharactersAmountClass = cr({
+            'cr-email-form__check--success': password.length > 7 && password.length < 21,
+        });
+
         const updatePassword = e => this.handleChange('password', e);
         const updateConfirmPassword = e => this.handleChange('confirmPassword', e);
         return (
@@ -126,6 +134,20 @@ class ChangeForgottenPasswordComponent extends React.Component<Props, ChangeForg
                                         classNameLabel="cr-email-form__label"
                                         classNameInput="cr-email-form__input"
                                     />
+                                </div>
+                                <div className="cr-email-form__check">
+                                    <span id="characters-amount" className={passwordCharactersAmountClass}>
+                                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.06284 0L9.41362 1.35173L3.22141 7.54446L0 4.32305L1.3512 2.97185L3.2211 4.83671L8.06284 0Z" fill={password.length > 7 && password.length < 21 ? '#05AA81' : ''}/>
+                                        </svg>
+                                        <span> 8-20 characters</span>
+                                    </span>
+                                    <span id="regex" className={passwordRegexClass}>
+                                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.06284 0L9.41362 1.35173L3.22141 7.54446L0 4.32305L1.3512 2.97185L3.2211 4.83671L8.06284 0Z" fill={password.match(PASSWORD_REGEX) ? '#05AA81' : ''}/>
+                                        </svg>
+                                        <span> Use at least one letter</span>
+                                    </span>
                                 </div>
                                 <div className={confirmPasswordFocusedClass}>
                                     <CustomInput

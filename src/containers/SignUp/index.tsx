@@ -1,7 +1,8 @@
-import { Button, Modal } from '@openware/components';
+import { Modal } from '@openware/components';
 import cx from 'classnames';
 import { History } from 'history';
 import * as React from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import {
     InjectedIntlProps,
     injectIntl,
@@ -47,8 +48,6 @@ interface RouterProps {
 
 type Props = ReduxProps & DispatchProps & RouterProps & InjectedIntlProps;
 
-export const extractRefID = (props: RouterProps) => new URLSearchParams(props.location.search).get('refid');
-
 class SignUpComponent extends React.Component<Props> {
     public readonly state = {
         showModal: false,
@@ -65,7 +64,7 @@ class SignUpComponent extends React.Component<Props> {
         emailFocused: false,
         passwordFocused: false,
         confirmPasswordFocused: false,
-        refIdFocused: false,
+        refIdOpened: false,
     };
 
     public componentDidMount() {
@@ -89,14 +88,13 @@ class SignUpComponent extends React.Component<Props> {
             refId,
             recaptcha_response,
             recaptchaConfirmed,
-            hasConfirmed,
             emailError,
             passwordError,
             confirmationError,
             emailFocused,
             passwordFocused,
             confirmPasswordFocused,
-            refIdFocused,
+            refIdOpened,
         } = this.state;
         const { loading } = this.props;
 
@@ -117,7 +115,7 @@ class SignUpComponent extends React.Component<Props> {
                         isLoading={loading}
                         image={logo}
                         onSignIn={this.handleSignIn}
-                        onSignUp={this.handleSignUp}
+                        onSignUp={this.showModal}
                         siteKey={siteKey()}
                         captchaType={captchaType()}
                         email={email}
@@ -129,20 +127,19 @@ class SignUpComponent extends React.Component<Props> {
                         recaptchaConfirmed={recaptchaConfirmed}
                         recaptcha_response={recaptcha_response}
                         recaptchaOnChange={this.onChange}
-                        hasConfirmed={hasConfirmed}
                         clickCheckBox={this.handleCheckboxClick}
                         validateForm={this.handleValidateForm}
                         emailError={emailError}
                         passwordError={passwordError}
                         confirmationError={confirmationError}
                         confirmPasswordFocused={confirmPasswordFocused}
-                        refIdFocused={refIdFocused}
+                        refIdOpened={refIdOpened}
                         emailFocused={emailFocused}
                         passwordFocused={passwordFocused}
                         handleFocusEmail={this.handleFocusEmail}
                         handleFocusPassword={this.handleFocusPassword}
                         handleFocusConfirmPassword={this.handleFocusConfirmPassword}
-                        handleFocusRefId={this.handleFocusRefId}
+                        handleOpenRefId={this.handleOpenRefId}
                     />
                     <Modal
                         show={this.state.showModal}
@@ -159,13 +156,14 @@ class SignUpComponent extends React.Component<Props> {
         this.setState({
             hasConfirmed: !this.state.hasConfirmed,
         });
-    }
+    };
 
     private onChange = (value: string) => {
         this.setState({
             recaptchaConfirmed: true,
             recaptcha_response: value,
         });
+        this.closeModal();
     };
 
     private handleChangeEmail = (value: string) => {
@@ -210,9 +208,9 @@ class SignUpComponent extends React.Component<Props> {
         });
     };
 
-    private handleFocusRefId = () => {
+    private handleOpenRefId = () => {
         this.setState({
-            refIdFocused: !this.state.refIdFocused,
+            refIdOpened: !this.state.refIdOpened,
         });
     };
 
@@ -277,37 +275,40 @@ class SignUpComponent extends React.Component<Props> {
 
     private renderModalHeader = () => {
         return (
-            <div className="pg-exchange-modal-submit-header">
-                {this.props.intl.formatMessage({id: 'page.header.signUp.modal.header'})}
-            </div>
+            <svg onClick={this.closeModal} style={{ textAlign: 'right' }} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.7" fillRule="evenodd" clipRule="evenodd" d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.097631 0.683417 -0.097631 1.31658 0.292893 1.70711L4.53553 5.94975L0.292894 10.1924C-0.0976307 10.5829 -0.0976307 11.2161 0.292894 11.6066C0.683418 11.9971 1.31658 11.9971 1.70711 11.6066L5.94975 7.36396L10.1924 11.6066C10.5829 11.9971 11.2161 11.9971 11.6066 11.6066C11.9971 11.2161 11.9971 10.5829 11.6066 10.1924L7.36396 5.94975L11.6066 1.70711C11.9971 1.31658 11.9971 0.683417 11.6066 0.292893C11.2161 -0.0976311 10.5829 -0.0976311 10.1924 0.292893L5.94975 4.53553L1.70711 0.292893Z" fill="#71717F"/>
+            </svg>
         );
     };
 
     private renderModalBody = () => {
         return (
-            <div className="pg-exchange-modal-submit-body">
-                <h2>
-                    {this.props.intl.formatMessage({id: 'page.header.signUp.modal.body'})}
-                </h2>
+            <div className="cr-sign-up-form__recaptcha">
+                <span>Verification</span>
             </div>
         );
     };
 
+    private showModal = () => {
+        this.setState({ showModal: true });
+    };
+
     private renderModalFooter = () => {
         return (
-            <div className="pg-exchange-modal-submit-footer">
-                <Button
-                    className="pg-exchange-modal-submit-footer__button-inverse"
-                    label="OK"
-                    onClick={this.closeModal}
+            <div className="cr-sign-up-form__recaptcha">
+                <ReCAPTCHA
+                    sitekey="6Lf_Mo0UAAAAAEWj9n2-2qo9t2_Ihw3YPt6SvI24"
+                    onChange={this.onChange}
                 />
             </div>
         );
     };
 
     private closeModal = () => {
-        this.setState({showModal: false});
-        this.props.history.push('/signin');
+        this.setState({ showModal: false });
+        if (this.state.recaptchaConfirmed) {
+            this.handleSignUp();
+        }
     };
 
     private extractRefID = (url: string) => new URLSearchParams(url).get('refid');

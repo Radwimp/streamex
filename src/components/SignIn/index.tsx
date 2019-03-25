@@ -1,7 +1,6 @@
 import {
     Button,
 } from '@openware/components';
-import cr from 'classnames';
 import * as React from 'react';
 import {
     CustomInput,
@@ -55,15 +54,7 @@ class SignInComponent extends React.Component<SignInProps> {
             emailLabel,
             passwordLabel,
             forgotPasswordLabel,
-            emailFocused,
-            passwordFocused,
         } = this.props;
-        const emailGroupClass = cr('cr-sign-in-form__group', {
-            'cr-sign-in-form__group--focused': emailFocused,
-        });
-        const passwordGroupClass = cr('cr-sign-in-form__group', {
-            'cr-sign-in-form__group--focused': passwordFocused,
-        });
 
         // tslint:disable:jsx-no-lambda
         return (
@@ -71,7 +62,7 @@ class SignInComponent extends React.Component<SignInProps> {
                 <div className="cr-sign-in-form">
                     <span className={'cr-sign-in-form__headline'}>Log in with your account</span>
                     <div className="cr-sign-in-form__form-content">
-                        <div className={emailGroupClass}>
+                        <div className="cr-sign-in-form__group">
                             <CustomInput
                                 type="email"
                                 label={emailLabel || 'Email'}
@@ -85,7 +76,7 @@ class SignInComponent extends React.Component<SignInProps> {
                             />
                             {emailError && <div className={'cr-sign-in-form__error'}>{emailError}</div>}
                         </div>
-                        <div className={passwordGroupClass}>
+                        <div className="cr-sign-in-form__group">
                             <CustomInput
                                 type="password"
                                 label={passwordLabel || 'Password'}

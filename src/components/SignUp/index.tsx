@@ -1,14 +1,11 @@
 import {
     Button,
-    Checkbox,
 } from '@openware/components';
-import cr from 'classnames';
 import {
     CustomInput,
 } from '../';
 
 import * as React from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import {
     EMAIL_REGEX,
     PASSWORD_REGEX,
@@ -41,7 +38,7 @@ interface SignUpFormProps {
     handleChangePassword: (value: string) => void;
     handleChangeConfirmPassword: (value: string) => void;
     handleChangeRefId: (value: string) => void;
-    hasConfirmed: boolean;
+    hasConfirmed?: boolean;
     clickCheckBox: () => void;
     validateForm: () => void;
     emailError: string;
@@ -50,9 +47,9 @@ interface SignUpFormProps {
     handleFocusEmail: () => void;
     handleFocusPassword: () => void;
     handleFocusConfirmPassword: () => void;
-    handleFocusRefId: () => void;
+    handleOpenRefId: () => void;
     confirmPasswordFocused: boolean;
-    refIdFocused: boolean;
+    refIdOpened: boolean;
     emailFocused: boolean;
     passwordFocused: boolean;
 }
@@ -64,74 +61,24 @@ class SignUpForm extends React.Component<SignUpFormProps> {
             password,
             confirmPassword,
             refId,
-            onSignIn,
-            image,
             isLoading,
-            captchaType,
-            labelSignIn,
             labelSignUp,
             emailLabel,
             passwordLabel,
             confirmPasswordLabel,
             referalCodeLabel,
-            termsMessage,
-            hasConfirmed,
             emailError,
             passwordError,
             confirmationError,
-            emailFocused,
-            passwordFocused,
-            confirmPasswordFocused,
-            refIdFocused,
+            refIdOpened,
         } = this.props;
-
-        const emailGroupClass = cr('cr-sign-up-form__group', {
-            'cr-sign-up-form__group--focused': emailFocused,
-        });
-
-        const passwordGroupClass = cr('cr-sign-up-form__group', {
-            'cr-sign-up-form__group--focused': passwordFocused,
-        });
-
-        const confirmPasswordGroupClass = cr('cr-sign-up-form__group', {
-            'cr-sign-up-form__group--focused': confirmPasswordFocused,
-        });
-        const refIdGroupClass = cr('cr-sign-up-form__group', {
-            'cr-sign-up-form__group--focused': refIdFocused,
-        });
-        const logo = image ? (
-            <h1 className="cr-sign-up-form__title">
-                <img className="cr-sign-up-form__image" src={image} alt="logo" />
-            </h1>
-        ) : null;
-        const captcha = hasConfirmed && captchaType !== 'none' ?
-            (
-                <div className="cr-sign-up-form__recaptcha">
-                    <ReCAPTCHA
-                        sitekey="6Lf_Mo0UAAAAAEWj9n2-2qo9t2_Ihw3YPt6SvI24"
-                        onChange={this.props.recaptchaOnChange}
-                    />
-                </div>
-            ) : null;
 
         return (
             <form>
-                {logo}
                 <div className="cr-sign-up-form">
-                    <div className="cr-sign-up-form__options-group">
-                        <div className="cr-sign-up-form__option">
-                            <div className="cr-sign-up-form__option-inner cr-sign-in-form__tab-signin" onClick={onSignIn}>
-                                {labelSignIn ? labelSignIn : 'Sign In'}
-                            </div>
-                        </div>
-                        <div className="cr-sign-up-form__option">
-                            <div className="cr-sign-up-form__option-inner __selected">
-                                {labelSignUp ? labelSignUp : 'Sign Up'}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="cr-sign-up-form__form-content">
-                        <div className={emailGroupClass}>
+                    <span className={'cr-sign-up-form__headline'}>Create your account</span>
+                    <div className="cr-sign-up-form__form-content" style={{ height: refIdOpened ? 490 : 360 }}>
+                        <div className="cr-sign-up-form__group">
                             <CustomInput
                                 type="email"
                                 label={emailLabel || 'Email'}
@@ -145,7 +92,7 @@ class SignUpForm extends React.Component<SignUpFormProps> {
                             />
                             {emailError && <div className="cr-sign-up-form__error">{emailError}</div>}
                         </div>
-                        <div className={passwordGroupClass}>
+                        <div className="cr-sign-up-form__group">
                             <CustomInput
                                 type="password"
                                 label={passwordLabel || 'Password'}
@@ -159,7 +106,7 @@ class SignUpForm extends React.Component<SignUpFormProps> {
                             />
                             {passwordError && <div className={'cr-sign-up-form__error'}>{passwordError}</div>}
                         </div>
-                        <div className={confirmPasswordGroupClass}>
+                        <div className="cr-sign-up-form__group">
                             <CustomInput
                                 type="password"
                                 label={confirmPasswordLabel || 'Confirm Password'}
@@ -171,9 +118,15 @@ class SignUpForm extends React.Component<SignUpFormProps> {
                                 classNameLabel="cr-sign-up-form__label"
                                 classNameInput="cr-sign-up-form__input"
                             />
-                            {confirmationError && <div className={'cr-sign-up-form__error'}>{confirmationError}</div>}
+                            {confirmationError && <div className="cr-sign-up-form__error">{confirmationError}</div>}
                         </div>
-                        <div className={refIdGroupClass}>
+                        <div className="cr-sign-up-form__ref" onClick={this.props.handleOpenRefId}>
+                            Have an Invitation code?
+                            <svg width="10" height="5" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.5" fillRule="evenodd" clipRule="evenodd" d="M1.20711 1.20711C0.761653 0.761653 1.07714 0 1.70711 0H8.29289C8.92286 0 9.23835 0.761654 8.79289 1.20711L5.5 4.5C5.22386 4.77614 4.77614 4.77614 4.5 4.5L1.20711 1.20711Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <div className="cr-sign-up-form__group" style={{ display: refIdOpened ? 'block' : 'none' }}>
                             <CustomInput
                                 type="text"
                                 label={referalCodeLabel || 'Referral code'}
@@ -181,18 +134,10 @@ class SignUpForm extends React.Component<SignUpFormProps> {
                                 defaultLabel="Referral code"
                                 handleChangeInput={this.props.handleChangeRefId}
                                 inputValue={refId}
-                                handleFocusInput={this.props.handleFocusRefId}
                                 classNameLabel="cr-sign-up-form__label"
                                 classNameInput="cr-sign-up-form__input"
                             />
                         </div>
-                        <Checkbox
-                            checked={hasConfirmed}
-                            className="cr-sign-up-form__checkbox"
-                            onChange={this.props.clickCheckBox}
-                            label={termsMessage ? termsMessage : 'I  agree all statements in terms of service'}
-                        />
-                        {captcha}
                         <div className="cr-sign-up-form__button-wrapper">
                             <Button
                                 type="submit"
@@ -201,6 +146,10 @@ class SignUpForm extends React.Component<SignUpFormProps> {
                                 disabled={this.disableButton()}
                                 onClick={this.handleClick}
                             />
+                        </div>
+                        <div className="cr-sign-up-form__footer">
+                            <span>By clicking “Create Account”, you agree to the &nbsp;</span>
+                            <a href="/">User Agreement</a>
                         </div>
                     </div>
                 </div>
@@ -213,19 +162,16 @@ class SignUpForm extends React.Component<SignUpFormProps> {
             email,
             password,
             confirmPassword,
-            hasConfirmed,
             recaptchaConfirmed,
             isLoading,
             captchaType,
         } = this.props;
 
-        if (!hasConfirmed || isLoading || !email.match(EMAIL_REGEX) || !password || !confirmPassword) {
+        if (isLoading || !email.match(EMAIL_REGEX) || !password || !confirmPassword) {
             return true;
         }
-        if (captchaType !== 'none' && !recaptchaConfirmed) {
-            return true;
-        }
-        return false;
+        return captchaType !== 'none' && !recaptchaConfirmed;
+
     };
 
     private handleSubmitForm() {
