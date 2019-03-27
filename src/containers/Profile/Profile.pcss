@@ -13,6 +13,10 @@
     margin: calc(var(--gap) * 1.37) 0;
   }
 
+  svg {
+    margin: 0 15px;
+  }
+
   .cr-button {
     margin-right: 0;
     color: var(--color-white);
@@ -27,16 +31,37 @@
   }
 
   &__level-verification {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px dotted var(--profile-grey);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
 
     &__name {
-      font-size: calc(var(--font-size) * 1.335);
+      color: var(--profile-box-head);
+      font-size: calc(var(--font-size) * 1.5);
       margin: 0;
+      font-weight: bold;
+    }
+
+    &__description {
+      margin-top: 7px;
+      font-size: 14px;
     }
 
     &__url {
-      font-size: calc(var(--font-size) * 1.335);
-      color: var(--profile-url) !important;
+      font-size: calc(var(--font-size) * 1.5);
+      font-weight: bold;
+      color: var(--profile-box-head);
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--profile-url);
+        text-decoration: underline;
+      }
     }
   }
 
@@ -49,7 +74,9 @@
     background-color: var(--profile-box);
     width: 100%;
     margin-top: calc(var(--gap) * 2);
-    border-radius: calc(var(--gap) * 0.66);
+    border-radius: calc(var(--gap));
+    padding: calc(var(--gap) * 2);
+
     &-user {
       p {
         word-break: break-all;
@@ -73,9 +100,8 @@
 
   &-header {
     display: flex;
-    padding: 0 calc(var(--gap) * 3) 0 calc(var(--gap) * 4);
+    padding-left: 15px;
     background: var(--profile-activity-header);
-    border-bottom: 1px solid var(--table-text-color);
     color: var(--color-white);
     border-radius: calc(var(--gap) * 0.66) calc(var(--gap) * 0.66) 0 0;
   }
@@ -185,6 +211,34 @@
   &__left-col {
     width: 48%;
 
+    &__box {
+      display: flex;
+      justify-content: space-between;
+      padding: 35px 35px 10px 35px;
+
+      &-image {
+        width: 120px;
+        transform: rotate(45deg);
+        overflow: hidden;
+        border-radius: 10px;
+
+        img {
+          max-width: 100%;
+          transform: rotate(-45deg) scale(1.42);
+        }
+      }
+
+      div svg {
+        position: relative;
+        bottom: 35px;
+        right: -70px;
+      }
+
+      &-incognito {
+        flex-grow: 4;
+      }
+    }
+
     &__basic {
       height: 25%;
 
@@ -235,21 +289,6 @@
         }
       }
     }
-
-    &__verification {
-      .pg-profile-page__box-header {
-        color: var(--white);
-        .pg-profile-page__row > .pg-profile-page__col:last-child {
-          display: flex;
-          justify-content: flex-end;
-          width: 70%;
-
-          p, h3 {
-            align-self: center;
-          }
-        }
-      }
-    }
   }
 
   &__right-col {
@@ -293,6 +332,28 @@
     }
   }
 
+  &__element {
+    border: 1px dotted var(--profile-grey);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    &-text {
+      color: var(--profile-box-head);
+      font-size: calc(var(--font-size) * 1.5);
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+
   .cr-copyable-text-field {
     &__input {
       background: var(--transparent);
@@ -304,7 +365,7 @@
     box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
     margin-top: calc(var(--gap) * 2);
     background: var(--profile-box);
-    border-radius: calc(var(--gap) * 0.66);
+    border-radius: calc(var(--gap));
 
     .cr-table {
 
@@ -359,7 +420,7 @@
     box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
     margin-top: calc(var(--gap) * 2);
     background: var(--profile-box);
-    border-radius: calc(var(--gap) * 0.66);
+    border-radius: calc(var(--gap));
 
     .cr-table {
       th {
@@ -594,19 +655,8 @@
   }
 
   &__text-success {
-    color: var(--color-white);
     width: 100%;
     position: relative;
-
-    &::after {
-      display: inline;
-      color: var(--white-color);
-      content: ' ✓';
-      font-size: calc(var(--font-size) * 2.5);
-      position: absolute;
-      right: -11px;
-      top: calc(var(--gap) * 0.83);
-    }
   }
 
   .cr-modal__container {
@@ -616,7 +666,6 @@
     &-header {
       background-color: var(--email-confirmation-screen-title-background);
       margin-bottom: 0;
-      border-bottom: 2px solid var(--text) !important;
 
       .pg-modal-change-password__header {
         display: flex;
@@ -668,9 +717,58 @@
   }
 
   &__verification {
-    width: 100% !important;
-    margin-top: calc(var(--gap) * 5);
-    height: calc(var(--gap) * 5);
+    margin-top: calc(var(--gap) * 2);
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
+    background-color: var(--profile-box);
+    width: 100%;
+    border-radius: calc(var(--gap));
+
+    &-box {
+      display: flex;
+      padding: 10px;
+    }
+  }
+
+  &__authentification {
+    margin-top: calc(var(--gap) * 2);
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
+    background-color: var(--profile-box);
+    width: 100%;
+    border-radius: calc(var(--gap));
+
+    &-box {
+      display: flex;
+      padding: 10px;
+
+      &__google-auth {
+        border: 1px dotted var(--profile-grey);
+        border-radius: 5px;
+        margin: 5px;
+        padding: 10px;
+        height: 45px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        &-name {
+          color: var(--profile-box-head);
+          font-size: calc(var(--font-size) * 1.5);
+          margin: 0 100px 0 10px;
+          font-weight: bold;
+        }
+
+        &-description {
+          margin: 7px 20px 0 0;
+          font-size: 14px;
+        }
+
+        &-button-wrapper {
+          input {
+            width: 110px;
+          }
+        }
+      }
+    }
   }
 
   &__btn-secondary {
@@ -709,7 +807,8 @@
   }
 
   &__verification-header {
-    font-size: calc(var(--font-size) * 1.67);
+    margin-bottom: -5px;
+    font-weight: bold !important;
   }
 
   &__pb-gap-6 {

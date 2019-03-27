@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { ProfileAccountActivity } from '../ProfileAccountActivity';
 import { ProfileApiKeys } from '../ProfileApiKeys';
 import { ProfileAuthDetails } from '../ProfileAuthDetails';
+import { ProfileTwoFactorAuth } from '../ProfileTwoFactorAuth';
 import { ProfileVerification } from '../ProfileVerification';
 import { ReferralProgram } from '../ReferralProgram';
 
@@ -24,20 +25,22 @@ class ProfileComponent extends React.Component<RouterProps> {
                             <FormattedMessage id="page.body.profile.header.account"/>
                         </h3>
                     </div>
-                    <div className="pg-profile-page__details-box">
-                        <div className="pg-profile-page__left-col">
-                            <ProfileAuthDetails/>
-                        </div>
-                        <div className="pg-profile-page__right-col">
-                            <ProfileVerification/>
-                        </div>
-                    </div>
+                    <ProfileAuthDetails/>
                     <ReferralProgram/>
                 </div>
+                <ProfileVerification/>
+                <ProfileTwoFactorAuth
+                    is2faEnabled={false}
+                    navigateTo2fa={this.foo}
+                />
                 <ProfileApiKeys/>
                 <ProfileAccountActivity/>
             </div>
         );
+    }
+
+    private foo = () => {
+        alert('potato');
     }
 }
 
